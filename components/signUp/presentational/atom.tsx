@@ -7,7 +7,9 @@ export const Container = styled.div`
 
 export const Title = styled.div``;
 
-export const ServeTitle = styled.label``;
+export const ServeTitle = styled.label`
+  color: ${(props) => props.theme.text};
+`;
 
 export const ValidText = styled.div``;
 

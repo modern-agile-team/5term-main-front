@@ -1,3 +1,3 @@
 import { ServeTitle } from "./atom";
 
-export const InputBlock = () => <ServeTitle></ServeTitle>;
+export const InputBlock = () => <ServeTitle>안녀어엉</ServeTitle>;

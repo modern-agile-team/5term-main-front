@@ -5,6 +5,7 @@ declare module "styled-components" {
     text: string;
     text2: string;
     text3: string;
-    IBMSansKr: string;
+    text4: string;
+    NotoSansKr: string;
   }
 }

@@ -1,7 +1,7 @@
-import { InputBlock } from "components/signUp/presentational/block";
+import SignUpFormView from "components/signUp/presentational/pages";
 
 function SignUp() {
-  return <InputBlock></InputBlock>;
+  return <SignUpFormView></SignUpFormView>;
 }
 
 export default SignUp;

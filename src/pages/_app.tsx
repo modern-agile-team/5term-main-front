@@ -3,7 +3,7 @@ import { GlobalStyle } from "components/common/Globalstyle";
 import type { AppProps } from "next/app";
 import { Noto_Sans_KR } from "next/font/google";
 import { ThemeProvider } from "styled-components";
-import { teme } from "../styles/theme";
+import { theme } from "../styles/theme";
 
 export const NotoSansKr = Noto_Sans_KR({
   preload: false,
@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <GlobalStyle />
       <BackGround />
-      <ThemeProvider theme={teme}>
+      <ThemeProvider theme={theme}>
         <main className={NotoSansKr.className}>
           <Component {...pageProps} />
         </main>

@@ -20,14 +20,13 @@ export const Header = styled.title`
   color: ${(props) => props.theme.text};
 `;
 
-export const Form = styled.form``;
-
 export const InputContainer = styled.div`
   width: 601px;
   display: flex;
   justify-content: space-between;
-  padding: 27px 0 20px;
-  @media screen and (max-width: 500px) {
+  padding: 40px 0 30px;
+
+  @media screen and (max-width: 550px) {
     width: 360px;
   }
 `;
@@ -36,12 +35,35 @@ export const ServeTitle = styled.label`
   font-size: 16px;
   font-weight: 700;
   color: ${(props) => props.theme.text3};
+
+  position: absolute;
+`;
+
+export const FocusServeTitle = styled(ServeTitle)`
+  color: ${(props) => props.theme.text2};
+
+  position: relative;
+`;
+
+export const AnnotationText = styled.label`
+  font-size: 14px;
+  font-weight: 100;
+  color: ${(props) => props.theme.text2};
+
+  position: absolute;
+  right: -1px;
+
+  z-index: -1;
+  @media screen and (max-width: 550px) {
+    font-size: 10px;
+    padding-top: 6px;
+  }
 `;
 
 export const ValidText = styled.div`
   font-size: 16px;
   font-weight: 500;
-  color: ${(props) => props.theme.text2};
+  color: ${(props) => props.theme.text3};
 `;
 
 export const InfoInput = styled.input`
@@ -49,14 +71,13 @@ export const InfoInput = styled.input`
   font-weight: 500;
   font-family: ${(props) => props.theme.NotoSansKr};
   color: ${(props) => props.theme.text2};
-  padding-bottom: 11px;
 
   width: 600px;
   outline: none;
   background: transparent;
   border: 0;
   border-bottom: 3px solid ${(props) => props.theme.text};
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 550px) {
     width: 360px;
   }
 `;
@@ -67,9 +88,9 @@ export const SendCertificationBtn = styled.button`
   font-family: ${(props) => props.theme.NotoSansKr};
   color: ${(props) => props.theme.text4};
 
-  position: absolute;
   left: 1;
   right: 0;
+  top: -11px;
 
   width: 108px;
   height: 28px;
@@ -79,16 +100,13 @@ export const SendCertificationBtn = styled.button`
   border-radius: 6px;
   border: 1px solid #aaaaaa;
 
+  position: absolute;
+
   cursor: pointer;
 `;
 
 export const CertificationBtn = styled(SendCertificationBtn)`
   width: 80px;
-`;
-
-export const EmailSelectBtn = styled(SendCertificationBtn)`
-  width: 180px;
-  height: 32px;
 `;
 
 export const RelativeContainer = styled.div`

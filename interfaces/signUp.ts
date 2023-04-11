@@ -1,4 +1,5 @@
 export interface InputProps {
   title: string;
-  text: string;
+  validText: string;
+  placeholder: string;
 }

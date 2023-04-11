@@ -10,17 +10,17 @@ const inputBlock = [
   {
     id: "닉네임",
     text: "중복된 닉네임 입니다.",
-    placeholder: "",
+    placeholder: "2~20자 사이로 적으세요.",
   },
   {
     id: "비밀번호",
     text: "사용 불가능한 비밀번호 입니다.",
-    placeholder: "",
+    placeholder: "숫자, 문자, 특수문자를 모두 사용해 최소 10자 이상 적으세요.",
   },
   {
     id: "비밀번호 확인",
     text: "사용 가능한 비밀번호 입니다.",
-    placeholder: "",
+    placeholder: "숫자, 문자, 특수문자를 모두 사용해 최소 10자 이상 적으세요.",
   },
   {
     id: "핸드폰",
@@ -43,8 +43,15 @@ export default function SignUpFormView() {
   return (
     <Container>
       <Header>회원가입</Header>
-      {inputBlock.map(({ id, text }) => {
-        return <InputBlock key={id} title={id} text={text}></InputBlock>;
+      {inputBlock.map(({ id, text, placeholder }) => {
+        return (
+          <InputBlock
+            key={id}
+            title={id}
+            validText={text}
+            placeholder={placeholder}
+          ></InputBlock>
+        );
       })}
       <SignUpBtn>회원가입</SignUpBtn>
     </Container>

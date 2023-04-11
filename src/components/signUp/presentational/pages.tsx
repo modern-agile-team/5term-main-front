@@ -1,5 +1,9 @@
-import { Container, Header, SignUpBtn } from "./atom";
-import { InputBlock } from "./block";
+import {
+  Container,
+  Header,
+  SignUpBtn,
+} from "components/signUp/presentational/atom";
+import { InputBlock } from "components/signUp/presentational/block";
 
 const inputBlock = [
   {

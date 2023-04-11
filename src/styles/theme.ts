@@ -1,4 +1,4 @@
-import { NotoSansKr } from "@/pages/_app";
+import { NotoSansKr } from "pages/_app";
 import { DefaultTheme } from "styled-components";
 
 export const theme: DefaultTheme = {

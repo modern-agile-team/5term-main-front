@@ -1,4 +1,4 @@
-import SignUpFormView from "components/signUp/presentational/pages";
+import SignUpFormView from "components/signUp/pages";
 
 function SignUp() {
   return <SignUpFormView></SignUpFormView>;

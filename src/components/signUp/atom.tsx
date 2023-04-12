@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -22,6 +23,7 @@ export const Header = styled.title`
 
 export const InputContainer = styled.div`
   width: 601px;
+  height: 90px;
   display: flex;
   justify-content: space-between;
   padding: 40px 0 30px;
@@ -31,11 +33,12 @@ export const InputContainer = styled.div`
   }
 `;
 
-export const ServeTitle = styled.label`
+export const ServeTitle = styled(motion.label)`
   font-size: 16px;
   font-weight: 700;
   color: ${(props) => props.theme.text3};
 
+  z-index: -1;
   position: absolute;
 `;
 
@@ -52,7 +55,6 @@ export const AnnotationText = styled.label`
 
   position: absolute;
   right: -1px;
-
   z-index: -1;
   @media screen and (max-width: 550px) {
     font-size: 10px;
@@ -70,13 +72,14 @@ export const InfoInput = styled.input`
   font-size: 14px;
   font-weight: 500;
   font-family: ${(props) => props.theme.NotoSansKr};
-  color: ${(props) => props.theme.text2};
+  color: ${(props) => props.theme.text3};
 
   width: 600px;
   outline: none;
   background: transparent;
   border: 0;
   border-bottom: 3px solid ${(props) => props.theme.text};
+
   @media screen and (max-width: 550px) {
     width: 360px;
   }

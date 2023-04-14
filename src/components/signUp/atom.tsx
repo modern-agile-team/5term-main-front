@@ -13,7 +13,6 @@ export const Header = styled.title`
   font-size: 40px;
   font-weight: 700;
 
-  padding-bottom: 20px;
   height: 15vh;
   display: flex;
   justify-content: center;
@@ -27,6 +26,7 @@ export const InputContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 40px 0 30px;
+  position: relative;
 
   @media screen and (max-width: 550px) {
     width: 360px;
@@ -55,7 +55,7 @@ export const AnnotationText = styled.label`
 
   position: absolute;
   right: -1px;
-  z-index: -1;
+  bottom: -18px;
   @media screen and (max-width: 550px) {
     font-size: 10px;
     padding-top: 6px;
@@ -66,6 +66,8 @@ export const ValidText = styled.div`
   font-size: 16px;
   font-weight: 500;
   color: ${(props) => props.theme.text3};
+  right: 1px;
+  position: absolute;
 `;
 
 export const InfoInput = styled.input`

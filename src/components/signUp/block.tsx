@@ -12,56 +12,82 @@ import {
 import { InputProps } from "interfaces/signUp";
 import { useState } from "react";
 
-export const InputBlock = ({ textObj }: InputProps) => {
-  const [isVisible, setIsVisible] = useState({
-    title: false,
-    valid: false,
-    explanation: true,
-  });
+export const InputBlock = ({
+  inputBlockObj,
+  register,
+  errors,
+  trigger,
+  getValues,
+  setError,
+}: InputProps) => {
+  const [isVisible, setIsVisible] = useState(false);
 
-  const onblurEvent = (event: React.FocusEvent<HTMLInputElement>) => {
-    const value = event.currentTarget.value;
-    setIsVisible((prevState) => {
-      return { ...prevState, title: Boolean(value) };
-    });
+  type DebounceFunction = <T extends any[]>(
+    callback: (...args: T) => void,
+    delay: number,
+  ) => (...args: T) => void;
+
+  const debounce: DebounceFunction = (callback, delay) => {
+    let timer: NodeJS.Timeout;
+    return (...args) => {
+      clearTimeout(timer);
+      timer = setTimeout(() => callback(...args), delay);
+    };
   };
 
-  const onchangeEvent = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onFocusEvent = () => {
+    setIsVisible(true);
+  };
+
+  const onBlurEvent = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
-    setIsVisible((prevState) => {
-      return { ...prevState, explanation: !Boolean(value) };
-    });
+    setIsVisible(Boolean(value));
+  };
+
+  const onChangeEvent = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    await trigger(`${inputBlockObj.id}`);
+    if (event.target.name === "id") {
+    }
+    if (event.target.name === "nickName") {
+    }
+    if (getValues("password") !== getValues("checkPassword")) {
+      setError("checkPassword", { message: "비밀번호가 일치하지 않습니다." });
+    }
   };
 
   return (
     <>
       <InputContainer>
-        {isVisible.title && (
-          <FocusServeTitle layoutId="underline">{textObj.id}</FocusServeTitle>
+        {isVisible && (
+          <FocusServeTitle layoutId="underline">
+            {inputBlockObj.title}
+          </FocusServeTitle>
         )}
-        {isVisible.valid && <ValidText>{textObj.validText}</ValidText>}
+        <ValidText>{errors?.[inputBlockObj.id]?.message as string}</ValidText>
       </InputContainer>
       <RelativeContainer>
-        {!isVisible.title && (
-          <ServeTitle layoutId="underline">{textObj.id}</ServeTitle>
+        {!isVisible && (
+          <ServeTitle layoutId="underline">{inputBlockObj.title}</ServeTitle>
         )}
-        {isVisible.explanation && (
-          <AnnotationText>{textObj.placeholder}</AnnotationText>
-        )}
-        {textObj.id === "핸드폰" && (
+        <AnnotationText>{inputBlockObj.placeholder}</AnnotationText>
+        {inputBlockObj.id === "phone" && (
           <SendCertificationBtn>인증번호 전송</SendCertificationBtn>
         )}
-        {textObj.id === "인증번호" && (
+        {inputBlockObj.id === "certificationNumber" && (
           <CertificationBtn>본인인증</CertificationBtn>
         )}
         <InfoInput
-          onFocus={() =>
-            setIsVisible((prevState) => {
-              return { ...prevState, title: true };
-            })
-          }
-          onBlur={(e) => onblurEvent(e)}
-          onChange={(e) => onchangeEvent(e)}
+          {...register(`${inputBlockObj.id}`, {
+            required: {
+              value: inputBlockObj.id !== "email",
+              message: "필수 입력 사항 입니다.",
+            },
+            pattern: inputBlockObj.pattern,
+            onChange: debounce(onChangeEvent, 500),
+            onBlur: onBlurEvent,
+          })}
+          onFocus={() => setIsVisible(true)}
+          type={`${inputBlockObj.type}`}
         />
       </RelativeContainer>
     </>

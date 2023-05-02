@@ -35,23 +35,18 @@ export const InputBlock = ({
     };
   };
 
-  const onFocusEvent = () => {
-    setIsVisible(true);
-  };
-
   const onBlurEvent = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setIsVisible(Boolean(value));
   };
 
   const onChangeEvent = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    await trigger(`${inputBlockObj.id}`);
-    if (event.target.name === "id") {
-    }
-    if (event.target.name === "nickName") {
-    }
+    await trigger(inputBlockObj.id);
     if (getValues("password") !== getValues("checkPassword")) {
       setError("checkPassword", { message: "비밀번호가 일치하지 않습니다." });
+    }
+    if (event.target.name === "id") {
+    } else if (event.target.name === "nickName") {
     }
   };
 

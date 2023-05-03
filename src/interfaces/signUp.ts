@@ -36,3 +36,7 @@ export interface IForm {
   email?: string;
   extraError?: string;
 }
+
+export interface IDuplications {
+  data: string;
+}

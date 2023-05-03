@@ -1,3 +1,4 @@
+import { duplicationsCheck } from "apis/signUp";
 import {
   InputContainer,
   InfoInput,
@@ -11,6 +12,7 @@ import {
 } from "./atom";
 import { InputProps } from "interfaces/signUp";
 import { useState } from "react";
+import { debounce } from "utils/debounce";
 
 export const InputBlock = ({
   inputBlockObj,
@@ -21,19 +23,6 @@ export const InputBlock = ({
   setError,
 }: InputProps) => {
   const [isVisible, setIsVisible] = useState(false);
-
-  type DebounceFunction = <T extends any[]>(
-    callback: (...args: T) => void,
-    delay: number,
-  ) => (...args: T) => void;
-
-  const debounce: DebounceFunction = (callback, delay) => {
-    let timer: NodeJS.Timeout;
-    return (...args) => {
-      clearTimeout(timer);
-      timer = setTimeout(() => callback(...args), delay);
-    };
-  };
 
   const onBlurEvent = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
@@ -46,6 +35,8 @@ export const InputBlock = ({
       setError("checkPassword", { message: "비밀번호가 일치하지 않습니다." });
     }
     if (event.target.name === "id") {
+      let test = { data: event.target.value };
+      await duplicationsCheck(test);
     } else if (event.target.name === "nickName") {
     }
   };

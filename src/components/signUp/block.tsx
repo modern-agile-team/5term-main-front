@@ -1,4 +1,4 @@
-import { duplicationsCheck } from "apis/signUp";
+import { idDuplicationsCheck, nickNameDuplicationsCheck } from "apis/signUp";
 import {
   InputContainer,
   InfoInput,
@@ -30,14 +30,32 @@ export const InputBlock = ({
   };
 
   const onChangeEvent = async (event: React.ChangeEvent<HTMLInputElement>) => {
+    let data = event.target.value;
+
+    // nothing in input
+    if (data === "") {
+      return;
+    }
+
     await trigger(inputBlockObj.id);
     if (getValues("password") !== getValues("checkPassword")) {
       setError("checkPassword", { message: "비밀번호가 일치하지 않습니다." });
     }
     if (event.target.name === "id") {
-      let test = { data: event.target.value };
-      await duplicationsCheck(test);
+      if ((await idDuplicationsCheck(data)) === 400) {
+        setError("id", { message: "중복된 아이디 입니다." });
+      }
     } else if (event.target.name === "nickName") {
+      try {
+        const response = await nickNameDuplicationsCheck(data);
+        console.log("hi");
+      } catch (error) {
+        console.log(error);
+        if (error?.response?.request?.status) {
+          setError("nickName", { message: "중복된 닉네임 입니다." });
+        }
+        setError("nickName", { message: "서버에러" });
+      }
     }
   };
 

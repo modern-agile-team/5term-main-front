@@ -1,3 +1,4 @@
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BackGround } from "components/common/backGround/atom";
 import { GlobalStyle } from "components/common/Globalstyle";
 import type { AppProps } from "next/app";
@@ -12,16 +13,20 @@ export const NotoSansKr = Noto_Sans_KR({
   variable: "--IBMSansKr",
 });
 
+const queryClient = new QueryClient();
+
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GlobalStyle />
       <BackGround />
-      <ThemeProvider theme={theme}>
-        <main className={NotoSansKr.className}>
-          <Component {...pageProps} />
-        </main>
-      </ThemeProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <main className={NotoSansKr.className}>
+            <Component {...pageProps} />
+          </main>
+        </ThemeProvider>
+      </QueryClientProvider>
     </>
   );
 }

@@ -92,6 +92,7 @@ export default function SignUpFormView() {
 
   const onValid = (data: IForm) => {
     console.log(data);
+    console.log("성공");
   };
 
   return (

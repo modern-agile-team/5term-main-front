@@ -75,10 +75,8 @@ export const INPUT_BLOCK = [
 ];
 
 export const VALIDATION_LIST = {
-  id: false,
-  nickname: false,
-  checkPassword: false,
   phone: false,
-  certificationNumber: false,
+  certification: false,
+  certificationNumber: null,
   agreement: false,
 };

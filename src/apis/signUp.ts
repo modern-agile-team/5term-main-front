@@ -35,3 +35,19 @@ export const nicknameDuplicationsCheck = async (data: String) => {
     throw error;
   }
 };
+
+export const sendCertification = async (data: Number) => {
+  try {
+    const response = await axios.get(`/api/auth/sms-certification/${data}`);
+    return response.data;
+  } catch (error: unknown) {
+    if (
+      axios.isAxiosError(error) &&
+      error.response &&
+      error.response.status === 400
+    ) {
+      return 400;
+    }
+    throw error;
+  }
+};

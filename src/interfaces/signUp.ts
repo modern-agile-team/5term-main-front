@@ -1,6 +1,7 @@
 import {
   FieldErrors,
   FieldValues,
+  UseFormGetFieldState,
   UseFormGetValues,
   UseFormRegister,
   UseFormSetError,

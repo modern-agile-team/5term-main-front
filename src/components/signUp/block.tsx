@@ -1,4 +1,4 @@
-import { idDuplicationsCheck, nickNameDuplicationsCheck } from "apis/signUp";
+import { idDuplicationsCheck, nicknameDuplicationsCheck } from "apis/signUp";
 import {
   InputContainer,
   InfoInput,
@@ -13,6 +13,7 @@ import {
 import { InputProps } from "interfaces/signUp";
 import { useState } from "react";
 import { debounce } from "utils/debounce";
+import { VALIDATION_LIST } from "constants/signUp";
 
 export const InputBlock = ({
   inputBlockObj,
@@ -30,31 +31,38 @@ export const InputBlock = ({
   };
 
   const onChangeEvent = async (event: React.ChangeEvent<HTMLInputElement>) => {
-    let data = event.target.value;
+    let value = event.target.value;
 
     // nothing in input
-    if (data === "") {
+    if (value === "") {
       return;
     }
 
     await trigger(inputBlockObj.id);
+    if (event.target.name === "password") {
+      await trigger("checkPassword");
+    }
+
     if (getValues("password") !== getValues("checkPassword")) {
       setError("checkPassword", { message: "비밀번호가 일치하지 않습니다." });
+      VALIDATION_LIST.checkPassword = false;
+    } else {
+      VALIDATION_LIST.checkPassword = true;
     }
+
     if (event.target.name === "id") {
-      if ((await idDuplicationsCheck(data)) === 400) {
-        setError("id", { message: "중복된 아이디 입니다." });
+      if ((await idDuplicationsCheck(event.target.value)) === 400) {
+        setError("id", { message: "이미 사용중인 아이디 입니다." });
+        VALIDATION_LIST.id = false;
+      } else {
+        VALIDATION_LIST.id = true;
       }
-    } else if (event.target.name === "nickName") {
-      try {
-        const response = await nickNameDuplicationsCheck(data);
-        console.log("hi");
-      } catch (error) {
-        console.log(error);
-        if (error?.response?.request?.status) {
-          setError("nickName", { message: "중복된 닉네임 입니다." });
-        }
-        setError("nickName", { message: "서버에러" });
+    } else if (event.target.name === "nickname") {
+      if ((await nicknameDuplicationsCheck(event.target.value)) === 400) {
+        setError("nickname", { message: "이미 사용중인 닉네임 입니다." });
+        VALIDATION_LIST.nickname = false;
+      } else {
+        VALIDATION_LIST.nickname = true;
       }
     }
   };

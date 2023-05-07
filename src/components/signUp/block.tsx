@@ -28,6 +28,7 @@ export const InputBlock = ({
   setError,
 }: InputProps) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [certification, setCertification] = useState(false);
 
   const onBlurEvent = (event: React.FocusEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
@@ -36,7 +37,6 @@ export const InputBlock = ({
 
   const onChangeEvent = async (event: React.ChangeEvent<HTMLInputElement>) => {
     let value = event.target.value;
-
     // nothing in input
     if (value === "") {
       return;
@@ -47,7 +47,10 @@ export const InputBlock = ({
       await trigger("checkPassword");
     }
 
-    if (event.target.name === "password" || "checkPassword") {
+    if (
+      event.target.name === "password" ||
+      event.target.name === "checkPassword"
+    ) {
       if (getValues("password") !== getValues("checkPassword")) {
         setError("checkPassword", { message: "비밀번호가 일치하지 않습니다." });
       }
@@ -59,6 +62,10 @@ export const InputBlock = ({
       if ((await nicknameDuplicationsCheck(event.target.value)) === 400) {
         setError("nickname", { message: "이미 사용중인 닉네임 입니다." });
       }
+    } else if (event.target.name === "phone") {
+      setCertification(false);
+      VALIDATION_LIST.phone = false;
+      VALIDATION_LIST.certification = false;
     }
   };
 
@@ -76,6 +83,7 @@ export const InputBlock = ({
       } else {
         VALIDATION_LIST.certificationNumber = response.certificationNumber;
         VALIDATION_LIST.phone = true;
+        setCertification(true);
       }
     }
   };
@@ -84,20 +92,19 @@ export const InputBlock = ({
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
-    const certificationNum = getValues("certificationNumber");
+    const certificationNum = Number(getValues("certificationNumber"));
     if (certificationNum !== null) {
       if (!VALIDATION_LIST.phone) {
         setError("certificationNumber", {
           message: "인증번호가 전송되지 않았습니다.",
         });
-        VALIDATION_LIST.certification = false;
       } else if (VALIDATION_LIST.certificationNumber !== certificationNum) {
         setError("certificationNumber", {
           message: "인증번호가 일치하지 않습니다.",
         });
-        VALIDATION_LIST.certification = false;
       } else {
         VALIDATION_LIST.certification = true;
+        setCertification(true);
       }
     }
   };
@@ -111,6 +118,7 @@ export const InputBlock = ({
           </FocusServeTitle>
         )}
         <ValidText>{errors?.[inputBlockObj.id]?.message as string}</ValidText>
+        {certification && <ValidText>{inputBlockObj.validText}</ValidText>}
       </InputContainer>
       <RelativeContainer>
         {!isVisible && (

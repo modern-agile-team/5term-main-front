@@ -37,3 +37,11 @@ export interface IForm {
   email?: string;
   extraError?: string;
 }
+
+export interface IValidationList {
+  [key: string]: { value: boolean; message: string };
+}
+
+export interface Icerification {
+  number: number | null;
+}

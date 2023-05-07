@@ -1,3 +1,5 @@
+import { IValidationList, Icerification } from "interfaces/signUp";
+
 export const INPUT_BLOCK = [
   {
     inputBlockObj: {
@@ -7,6 +9,16 @@ export const INPUT_BLOCK = [
       pattern: {
         value: /^[a-zA-Z][a-zA-Z0-9]{3,19}$/,
         message: "올바른 아이디 입력 바랍니다.",
+      },
+    },
+  },
+  {
+    inputBlockObj: {
+      id: "name",
+      title: "이름",
+      pattern: {
+        value: /^([가-힣]{2,10}|[a-zA-Z]{2,20}\s[a-zA-Z]{2,20})$/,
+        message: "올바른 이름 입력 바랍니다.",
       },
     },
   },
@@ -57,7 +69,7 @@ export const INPUT_BLOCK = [
   },
   {
     inputBlockObj: {
-      id: "certificationNumber",
+      id: "certification",
       title: "인증번호",
       validText: "본인인증이 완료 됐습니다.",
     },
@@ -74,9 +86,15 @@ export const INPUT_BLOCK = [
   },
 ];
 
-export const VALIDATION_LIST = {
-  phone: false,
-  certification: false,
-  certificationNumber: null,
-  agreement: false,
+export const VALIDATION_LIST: IValidationList = {
+  phone: { value: false, message: "본인인증이 진행되지 않았습니다." },
+  certification: {
+    value: false,
+    message: "본인인증이 진행되지 않았습니다.",
+  },
+  // agreement: { value: false, message: "필수약관 입니다." },
+};
+
+export const CERTIFICATION_NUMBER: Icerification = {
+  number: null,
 };

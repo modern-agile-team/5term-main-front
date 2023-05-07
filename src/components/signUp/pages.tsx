@@ -1,3 +1,4 @@
+import { requestSignUp } from "apis/signUp";
 import { Container, Header, SignUpBtn } from "components/signUp/atom";
 import { InputBlock } from "components/signUp/block";
 import { INPUT_BLOCK, VALIDATION_LIST } from "constants/signUp";
@@ -13,15 +14,29 @@ export default function SignUpFormView() {
     trigger,
     setError,
     getValues,
+    setFocus,
   } = useForm();
 
-  const onValid = (data: IForm) => {
-    console.log(Object.values(VALIDATION_LIST));
-    console.log("성공");
+  const onValid = (event: React.MouseEvent<HTMLButtonElement>) => {
+    for (let list of Object.keys(VALIDATION_LIST)) {
+      if (!VALIDATION_LIST[list].value) {
+        setError(`${list}`, { message: VALIDATION_LIST[list].message });
+      }
+    }
+    const errorsArray = Object.keys(errors);
+    console.log(errorsArray);
+    if (errorsArray.length > 0) {
+      event.preventDefault();
+      setFocus(errorsArray[0]);
+    }
+  };
+
+  const signUp = async (data: IForm) => {
+    await requestSignUp(data);
   };
 
   return (
-    <form onSubmit={handleSubmit(onValid)}>
+    <form onSubmit={handleSubmit(signUp)}>
       <Container>
         <Header>회원가입</Header>
         {INPUT_BLOCK.map(({ inputBlockObj }, index) => {
@@ -38,7 +53,7 @@ export default function SignUpFormView() {
             </LayoutGroup>
           );
         })}
-        <SignUpBtn>회원가입</SignUpBtn>
+        <SignUpBtn onClick={onValid}>회원가입</SignUpBtn>
       </Container>
     </form>
   );

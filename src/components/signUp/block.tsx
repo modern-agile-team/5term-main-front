@@ -17,7 +17,7 @@ import {
 import { InputProps } from "interfaces/signUp";
 import { useState } from "react";
 import { debounce } from "utils/debounce";
-import { VALIDATION_LIST } from "constants/signUp";
+import { CERTIFICATION_NUMBER, VALIDATION_LIST } from "constants/signUp";
 
 export const InputBlock = ({
   inputBlockObj,
@@ -64,8 +64,8 @@ export const InputBlock = ({
       }
     } else if (event.target.name === "phone") {
       setCertification(false);
-      VALIDATION_LIST.phone = false;
-      VALIDATION_LIST.certification = false;
+      VALIDATION_LIST.phone.value = false;
+      VALIDATION_LIST.certification.value = false;
     }
   };
 
@@ -74,15 +74,13 @@ export const InputBlock = ({
     errors: { [key: string]: any },
   ) => {
     event.preventDefault();
-    VALIDATION_LIST.phone = false;
     if (!errors.phone) {
       const response = await sendCertification(Number(getValues("phone")));
       if (response === 400) {
         setError("phone", { message: "이미 가입된 번호 입니다." });
-        VALIDATION_LIST.phone = false;
       } else {
-        VALIDATION_LIST.certificationNumber = response.certificationNumber;
-        VALIDATION_LIST.phone = true;
+        CERTIFICATION_NUMBER.number = response.certificationNumber;
+        VALIDATION_LIST.phone.value = true;
         setCertification(true);
       }
     }
@@ -92,18 +90,19 @@ export const InputBlock = ({
     event: React.MouseEvent<HTMLButtonElement>,
   ) => {
     event.preventDefault();
-    const certificationNum = Number(getValues("certificationNumber"));
+    const certificationNum = Number(getValues("certification"));
     if (certificationNum !== null) {
       if (!VALIDATION_LIST.phone) {
-        setError("certificationNumber", {
+        setError("certification", {
           message: "인증번호가 전송되지 않았습니다.",
         });
-      } else if (VALIDATION_LIST.certificationNumber !== certificationNum) {
-        setError("certificationNumber", {
+      } else if (CERTIFICATION_NUMBER.number !== certificationNum) {
+        setError("certification", {
           message: "인증번호가 일치하지 않습니다.",
         });
       } else {
-        VALIDATION_LIST.certification = true;
+        console.log("클릭");
+        VALIDATION_LIST.certification.value = true;
         setCertification(true);
       }
     }
@@ -117,8 +116,11 @@ export const InputBlock = ({
             {inputBlockObj.title}
           </FocusServeTitle>
         )}
-        <ValidText>{errors?.[inputBlockObj.id]?.message as string}</ValidText>
-        {certification && <ValidText>{inputBlockObj.validText}</ValidText>}
+        {errors[inputBlockObj.id] ? (
+          <ValidText>{errors?.[inputBlockObj.id]?.message as string}</ValidText>
+        ) : (
+          certification && <ValidText>{inputBlockObj.validText}</ValidText>
+        )}
       </InputContainer>
       <RelativeContainer>
         {!isVisible && (
@@ -132,7 +134,7 @@ export const InputBlock = ({
             인증번호 전송
           </SendCertificationBtn>
         )}
-        {inputBlockObj.id === "certificationNumber" && (
+        {inputBlockObj.id === "certification" && (
           <CertificationBtn onClick={ValidationCertification}>
             본인인증
           </CertificationBtn>

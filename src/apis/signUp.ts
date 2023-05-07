@@ -40,7 +40,7 @@ export const nicknameDuplicationsCheck = async (data: String) => {
 export const sendCertification = async (data: Number) => {
   try {
     const response = await axios.get(`/api/auth/sms-certification/${data}`);
-    console.log(response.data);
+
     return response.data;
   } catch (error: unknown) {
     if (
@@ -57,7 +57,7 @@ export const sendCertification = async (data: Number) => {
 export const requestSignUp = async (data: IForm) => {
   try {
     console.log(data);
-    const response = await axios.post(`/api/auth/signup`, { data });
+    const response = await axios.post(`/api/auth/signup`, data);
     console.log(response);
     // return response.data;
   } catch (error: unknown) {

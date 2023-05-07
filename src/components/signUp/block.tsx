@@ -26,6 +26,7 @@ export const InputBlock = ({
   trigger,
   getValues,
   setError,
+  clearErrors,
 }: InputProps) => {
   const [isVisible, setIsVisible] = useState(false);
   const [certification, setCertification] = useState(false);
@@ -101,7 +102,7 @@ export const InputBlock = ({
           message: "인증번호가 일치하지 않습니다.",
         });
       } else {
-        console.log("클릭");
+        clearErrors(["certification"]);
         VALIDATION_LIST.certification.value = true;
         setCertification(true);
       }

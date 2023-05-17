@@ -15,6 +15,7 @@ export default function SignUpFormView() {
     setError,
     getValues,
     setFocus,
+    clearErrors,
   } = useForm();
 
   const onValid = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -24,7 +25,6 @@ export default function SignUpFormView() {
       }
     }
     const errorsArray = Object.keys(errors);
-    console.log(errorsArray);
     if (errorsArray.length > 0) {
       event.preventDefault();
       setFocus(errorsArray[0]);
@@ -49,6 +49,7 @@ export default function SignUpFormView() {
                 trigger={trigger}
                 getValues={getValues}
                 setError={setError}
+                clearErrors={clearErrors}
               ></InputBlock>
             </LayoutGroup>
           );

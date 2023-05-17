@@ -1,7 +1,7 @@
 import {
   FieldErrors,
   FieldValues,
-  UseFormGetFieldState,
+  UseFormClearErrors,
   UseFormGetValues,
   UseFormRegister,
   UseFormSetError,
@@ -25,6 +25,7 @@ export interface InputProps {
   trigger: UseFormTrigger<FieldValues>;
   getValues: UseFormGetValues<FieldValues>;
   setError: UseFormSetError<FieldValues>;
+  clearErrors: UseFormClearErrors<FieldValues>;
 }
 
 export interface IForm {

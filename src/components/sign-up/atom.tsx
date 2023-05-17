@@ -13,7 +13,7 @@ export const Header = styled.title`
   font-size: 40px;
   font-weight: 700;
 
-  height: 15vh;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: end;

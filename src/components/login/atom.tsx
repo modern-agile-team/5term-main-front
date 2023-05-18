@@ -1,15 +1,24 @@
-import { SendCertificationBtn, ServeTitle } from "components/sign-up/atom";
+import { SendCertificationBtn, ServeTitle } from "components/signup/atom";
 import Link from "next/link";
 import styled from "styled-components";
 
-export const LoginBtn = styled(SendCertificationBtn)`
+export const LoginBtn = styled.button`
   font-size: 20px;
   font-weight: 700;
+  font-family: ${(props) => props.theme.NotoSansKr};
+  color: ${(props) => props.theme.text4};
+
   width: 390px;
   height: 50px;
   margin-top: 63px;
 
-  position: static;
+  background: rgb(182 187 190 / 95%);
+  box-shadow: inset 5px 5px 8px #4c4b4b80, 7px 7px 15px #4e4c4c9e;
+  backdrop-filter: blur(20px);
+  border-radius: 6px;
+  border: 1px solid #aaaaaa;
+
+  cursor: pointer;
 
   @media screen and (max-width: 500px) {
     width: 360px;
@@ -24,10 +33,17 @@ export const Title = styled(Link)`
   color: ${(props) => props.theme.text3};
 
   border-right: 1px solid;
+
+  cursor: pointer;
+
+  @media screen and (max-width: 550px) {
+    font-size: 13px;
+  }
 `;
 
 export const RightTitle = styled(Title)`
   border: none;
+  padding-right: 0px;
 `;
 
 export const TitleContainer = styled.div`

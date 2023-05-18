@@ -5,11 +5,16 @@ import {
   RelativeContainer,
   ServeTitle,
   ValidText,
-} from "components/sign-up/atom";
+} from "components/signup/atom";
 import { InputProps } from "interfaces/login";
 import { useState } from "react";
 
-export function InputBlock({ inputBlockObj, register, errors }: InputProps) {
+export function InputBlock({
+  inputBlockObj,
+  register,
+  errors,
+  getValues,
+}: InputProps) {
   const [isVisible, setIsVisible] = useState(false);
 
   return (
@@ -37,7 +42,9 @@ export function InputBlock({ inputBlockObj, register, errors }: InputProps) {
               value: true,
               message: "필수 입력 사항 입니다.",
             },
-            onBlur: () => setIsVisible(false),
+            onBlur: () => {
+              if (!getValues(`${inputBlockObj.id}`)) setIsVisible(false);
+            },
           })}
           onFocus={() => setIsVisible(true)}
           type={`${inputBlockObj.type}`}

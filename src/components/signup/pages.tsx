@@ -1,6 +1,6 @@
-import { requestSignUp } from "apis/signUp";
-import { Container, Header, SignUpBtn } from "components/sign-up/atom";
-import { InputBlock } from "components/sign-up/block";
+import { requestSignUp } from "apis/signup";
+import { Container, Header, SignUpBtn } from "components/signup/atom";
+import { InputBlock } from "components/signup/block";
 import { INPUT_BLOCK, VALIDATION_LIST } from "constants/signUp";
 import { LayoutGroup } from "framer-motion";
 import { IForm } from "interfaces/signUp";

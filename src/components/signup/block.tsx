@@ -2,7 +2,7 @@ import {
   idDuplicationsCheck,
   nicknameDuplicationsCheck,
   sendCertification,
-} from "apis/signUp";
+} from "apis/signup";
 import {
   InputContainer,
   InfoInput,

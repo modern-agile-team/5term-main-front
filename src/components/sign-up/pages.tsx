@@ -1,6 +1,6 @@
 import { requestSignUp } from "apis/signUp";
-import { Container, Header, SignUpBtn } from "components/signUp/atom";
-import { InputBlock } from "components/signUp/block";
+import { Container, Header, SignUpBtn } from "components/sign-up/atom";
+import { InputBlock } from "components/sign-up/block";
 import { INPUT_BLOCK, VALIDATION_LIST } from "constants/signUp";
 import { LayoutGroup } from "framer-motion";
 import { IForm } from "interfaces/signUp";
@@ -25,7 +25,7 @@ export default function SignUpFormView() {
       }
     }
     const errorsArray = Object.keys(errors);
-    if (errorsArray.length > 0) {
+    if (errorsArray.length) {
       event.preventDefault();
       setFocus(errorsArray[0]);
     }

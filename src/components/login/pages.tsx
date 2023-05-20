@@ -8,6 +8,8 @@ import { LayoutGroup } from "framer-motion";
 import { LoginBtn, RightTitle, Title, TitleContainer } from "./atom";
 import { ILoginForm } from "interfaces/login";
 import { requestLogin } from "apis/login";
+import { useDispatch } from "react-redux";
+import { updateUserState } from "store/slice/loginSlice";
 
 export default function LoginFormView() {
   const {
@@ -17,11 +19,12 @@ export default function LoginFormView() {
     getValues,
     setError,
   } = useForm();
+  const dispatch = useDispatch();
 
   const login = async (data: ILoginForm) => {
     const response = await requestLogin(data);
     if (response) {
-      //이전 페이지로 이동 로직 구현
+      dispatch(updateUserState(true));
     } else {
       setError("id", { message: "아이디 혹은 비밀번호가 올바르지 않습니다." });
     }

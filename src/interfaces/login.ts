@@ -20,3 +20,8 @@ export interface ILoginForm {
   id?: string;
   password?: string;
 }
+
+export interface LoginResponse {
+  accessToken: string;
+  status: number;
+}

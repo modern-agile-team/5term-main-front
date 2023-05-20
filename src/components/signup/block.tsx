@@ -93,7 +93,7 @@ export const InputBlock = ({
     event.preventDefault();
     const certificationNum = Number(getValues("certification"));
     if (certificationNum !== null) {
-      if (!VALIDATION_LIST.phone) {
+      if (!VALIDATION_LIST.phone.value) {
         setError("certification", {
           message: "인증번호가 전송되지 않았습니다.",
         });

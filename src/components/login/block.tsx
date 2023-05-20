@@ -25,11 +25,7 @@ export function InputBlock({
             {inputBlockObj.title}
           </FocusServeTitle>
         )}
-        {errors ? (
-          <ValidText>{errors?.[inputBlockObj.id]?.message as string}</ValidText>
-        ) : (
-          <ValidText></ValidText>
-        )}
+        <ValidText>{errors?.[inputBlockObj.id]?.message as string}</ValidText>
       </InputContainer>
       <RelativeContainer>
         {!isVisible && (

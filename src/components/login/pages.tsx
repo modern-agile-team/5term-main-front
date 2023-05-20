@@ -1,3 +1,5 @@
+"use client";
+
 import { Container, Header } from "components/signup/atom";
 import { LOGIN_INPUT_BLOCK } from "constants/login";
 import { InputBlock } from "./block";
@@ -13,10 +15,16 @@ export default function LoginFormView() {
     register,
     formState: { errors },
     getValues,
+    setError,
   } = useForm();
 
   const login = async (data: ILoginForm) => {
-    await requestLogin(data);
+    const response = await requestLogin(data);
+    if (response) {
+      //이전 페이지로 이동 로직 구현
+    } else {
+      setError("id", { message: "아이디 혹은 비밀번호가 올바르지 않습니다." });
+    }
   };
 
   return (

@@ -5,6 +5,7 @@ import type { AppProps } from "next/app";
 import { Noto_Sans_KR } from "next/font/google";
 import { ThemeProvider } from "styled-components";
 import { theme } from "styles/theme";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 export const NotoSansKr = Noto_Sans_KR({
   preload: false,
@@ -23,6 +24,7 @@ export default function App({ Component, pageProps }: AppProps) {
       <QueryClientProvider client={queryClient}>
         <ThemeProvider theme={theme}>
           <main className={NotoSansKr.className}>
+            <ReactQueryDevtools initialIsOpen={false} />
             <Component {...pageProps} />
           </main>
         </ThemeProvider>

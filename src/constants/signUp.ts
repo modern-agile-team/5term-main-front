@@ -10,6 +10,7 @@ export const INPUT_BLOCK = [
         value: /^[a-zA-Z][a-zA-Z0-9]{3,19}$/,
         message: "올바른 아이디 입력 바랍니다.",
       },
+      type: "text",
     },
   },
   {
@@ -20,6 +21,7 @@ export const INPUT_BLOCK = [
         value: /^([가-힣]{2,10}|[a-zA-Z]{2,20}\s[a-zA-Z]{2,20})$/,
         message: "올바른 이름 입력 바랍니다.",
       },
+      type: "text",
     },
   },
   {
@@ -31,6 +33,7 @@ export const INPUT_BLOCK = [
         value: /^[a-zA-Z0-9가-힣]{2,20}$/,
         message: "올바른 닉네임 입력 바랍니다.",
       },
+      type: "text",
     },
   },
   {
@@ -65,6 +68,7 @@ export const INPUT_BLOCK = [
         value: /^[0-9]{2,3}[0-9]{4}[0-9]{4}$/,
         message: "형식에 맞지 않는 번호입니다.",
       },
+      type: "text",
     },
   },
   {
@@ -72,6 +76,7 @@ export const INPUT_BLOCK = [
       id: "certification",
       title: "인증번호",
       validText: "본인인증이 완료 됐습니다.",
+      type: "text",
     },
   },
   {
@@ -82,6 +87,7 @@ export const INPUT_BLOCK = [
         value: /^[a-z0-9\.\-_]+@([a-z0-9\-]+\.)+[a-z]{2,6}$/,
         message: "형식에 맞지 않는 이메일입니다.",
       },
+      type: "text",
     },
   },
 ];

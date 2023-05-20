@@ -68,6 +68,11 @@ export const ValidText = styled.div`
   color: ${(props) => props.theme.text3};
   right: 1px;
   position: absolute;
+
+  @media screen and (max-width: 550px) {
+    font-size: 10px;
+    padding-top: 6px;
+  }
 `;
 
 export const InfoInput = styled.input`

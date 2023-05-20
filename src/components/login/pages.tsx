@@ -9,7 +9,7 @@ import { LoginBtn, RightTitle, Title, TitleContainer } from "./atom";
 import { ILoginForm } from "interfaces/login";
 import { requestLogin } from "apis/login";
 import { useDispatch } from "react-redux";
-import { updateUserState } from "store/slice/loginSlice";
+import { updateUserState } from "store/slice/userSlice";
 
 export default function LoginFormView() {
   const {

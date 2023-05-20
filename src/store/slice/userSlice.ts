@@ -6,6 +6,7 @@ const userStateSlice = createSlice({
   reducers: {
     updateUserState: (user, action) => {
       user.state = action.payload;
+      console.log(action.payload);
     },
   },
 });

@@ -23,5 +23,6 @@ export interface ILoginForm {
 
 export interface LoginResponse {
   accessToken: string;
+  refreshToken: string;
   status: number;
 }

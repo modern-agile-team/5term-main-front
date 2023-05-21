@@ -10,6 +10,7 @@ import { ILoginForm } from "interfaces/login";
 import { requestLogin } from "apis/login";
 import { useDispatch } from "react-redux";
 import { updateUserState } from "store/slice/userSlice";
+import router from "next/router";
 
 export default function LoginFormView() {
   const {
@@ -25,6 +26,7 @@ export default function LoginFormView() {
     const response = await requestLogin(data);
     if (response) {
       dispatch(updateUserState(true));
+      router.back();
     } else {
       setError("id", { message: "아이디 혹은 비밀번호가 올바르지 않습니다." });
     }

@@ -75,7 +75,7 @@ export const InputBlock = ({
     errors: { [key: string]: any },
   ) => {
     event.preventDefault();
-    if (!errors.phone) {
+    if (!errors.phone && getValues("phone")) {
       const response = await sendCertification(Number(getValues("phone")));
       if (response === 400) {
         setError("phone", { message: "이미 가입된 번호 입니다." });

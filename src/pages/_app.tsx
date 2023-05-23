@@ -19,6 +19,8 @@ export const NotoSansKr = Noto_Sans_KR({
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
+  
+  
   return (
     <>
       <GlobalStyle />

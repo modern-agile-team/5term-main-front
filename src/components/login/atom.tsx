@@ -1,4 +1,3 @@
-import { SendCertificationBtn, ServeTitle } from "components/signup/atom";
 import Link from "next/link";
 import styled from "styled-components";
 

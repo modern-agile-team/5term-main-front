@@ -12,7 +12,7 @@ export const Container = styled.div`
 `;
 
 export const RightContainer = styled.section`
-  margin: 0 auto 0 5vw;
+  margin: 0 auto;
   display: flex;
 
   align-items: center;

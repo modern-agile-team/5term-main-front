@@ -30,6 +30,7 @@ export const Title = styled(Link)`
   padding: 3px 16px 3px 17px;
 
   color: ${(props) => props.theme.text3};
+  font-family: ${(props) => props.theme.NotoSansKr};
 
   border-right: 1px solid;
 

@@ -8,6 +8,7 @@ import { theme } from "styles/theme";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Provider } from "react-redux";
 import store from "store/configureStore";
+import { NaigationBlock } from "components/common/navigationBar/block";
 
 export const NotoSansKr = Noto_Sans_KR({
   preload: false,
@@ -19,8 +20,6 @@ export const NotoSansKr = Noto_Sans_KR({
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
-  
-  
   return (
     <>
       <GlobalStyle />
@@ -30,6 +29,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={theme}>
             <main className={NotoSansKr.className}>
               <ReactQueryDevtools initialIsOpen={false} />
+              <NaigationBlock />
               <Component {...pageProps} />
             </main>
           </ThemeProvider>

@@ -3,9 +3,7 @@ import {
   HeaderText,
   LabelText,
   MainContainer,
-  MenuContainer,
   NameText,
-  PenSvg,
   Profile,
   ProfileContainer,
   RightContainer,
@@ -16,17 +14,12 @@ import {
   UserInfoText,
 } from "./atom";
 
-export function SideBarBlock() {
-  return <MenuContainer></MenuContainer>;
-}
-
 export function MainBlock() {
   return (
     <RightContainer>
       <MainContainer>
         <ProfileContainer>
           <HeaderText>프로필 수정</HeaderText>
-          <PenSvg />
           <Profile />
           <HeaderText>닉네임</HeaderText>
         </ProfileContainer>
@@ -35,7 +28,6 @@ export function MainBlock() {
           <LabelText>기본정보</LabelText>
           <UserContainer>
             <NameText>이름</NameText>
-            <span></span>
           </UserContainer>
           <RowContour />
           <UserContainer>

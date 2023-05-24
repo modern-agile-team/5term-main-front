@@ -11,15 +11,6 @@ export const Container = styled.div`
   display: flex;
 `;
 
-export const MenuContainer = styled.aside`
-  width: 20vw;
-  max-width: 400px;
-  min-width: 205px;
-
-  height: 100vh;
-  background-color: ${(props) => props.theme.text};
-`;
-
 export const RightContainer = styled.section`
   margin: 0 auto 0 5vw;
   display: flex;
@@ -55,8 +46,6 @@ export const ProfileContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-
-  position: relative;
 `;
 
 export const ColumnContour = styled.div`
@@ -103,29 +92,30 @@ const PencilIconContainer = styled.span`
   align-items: center;
 
   position: absolute;
-  right: 21%;
-  bottom: 21.5%;
+  right: -10px;
+  bottom: -10px;
 `;
 
-export const PenSvg = () => (
-  <PencilIconContainer>
-    <Image src={penSvg} alt="penIcon" width={30} height={30} />
-  </PencilIconContainer>
-);
-
 const ProfileCustom = styled.div`
-  width: 150px;
-  height: 150px;
-  /* 위 2개 삭제 후 react-cropper로 이미지 수정 진행*/
-
-  border-radius: 10px;
-  overflow: hidden;
+  /* react-cropper로 이미지 수정 진행*/
   margin-top: 30px;
+
+  position: relative;
+`;
+
+const ImageWapper = styled.div`
+  overflow: hidden;
+  border-radius: 20px;
 `;
 
 export const Profile = () => (
   <ProfileCustom>
-    <Image src={defaultImg} alt="test" />
+    <ImageWapper>
+      <Image src={defaultImg} alt="test" width={150} height={150} />
+    </ImageWapper>
+    <PencilIconContainer>
+      <Image src={penSvg} alt="penIcon" width={30} height={30} />
+    </PencilIconContainer>
   </ProfileCustom>
 );
 
@@ -173,7 +163,3 @@ export const UserContainer = styled.div`
   justify-content: space-between;
   align-items: center;
 `;
-
-//-------------------------------------------------------------------------------------
-//
-//-------------------------------------------------------------------------------------

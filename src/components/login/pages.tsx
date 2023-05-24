@@ -25,7 +25,7 @@ export default function LoginFormView() {
   const login = async (data: ILoginForm) => {
     const response = await requestLogin(data);
     if (response) {
-      dispatch(updateUserState(true));
+      dispatch(updateUserState(true)); //굳이 필요한가?
       router.back();
     } else {
       setError("id", { message: "아이디 혹은 비밀번호가 올바르지 않습니다." });

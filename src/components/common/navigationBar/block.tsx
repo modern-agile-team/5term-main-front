@@ -5,7 +5,7 @@ import {
   TemporaryLogo,
 } from "./atom";
 
-export function NaigationBlock() {
+export function NavigationBlock() {
   return (
     <NavigationContainer>
       <TemporaryLogo>LOGO</TemporaryLogo>

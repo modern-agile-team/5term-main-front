@@ -8,7 +8,9 @@ import { theme } from "styles/theme";
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Provider } from "react-redux";
 import store from "store/configureStore";
-import { NaigationBlock } from "components/common/navigationBar/block";
+import { NavigationBlock } from "components/common/navigationBar/block";
+import { useRouter } from "next/router";
+import { NAVIGATION_SHOW_LIST } from "constants/navigation";
 
 export const NotoSansKr = Noto_Sans_KR({
   preload: false,
@@ -20,6 +22,9 @@ export const NotoSansKr = Noto_Sans_KR({
 const queryClient = new QueryClient();
 
 export default function App({ Component, pageProps }: AppProps) {
+  const { pathname } = useRouter();
+  const showNavigation =
+    NAVIGATION_SHOW_LIST.find((url) => url === pathname) ?? false;
   return (
     <>
       <GlobalStyle />
@@ -29,7 +34,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <ThemeProvider theme={theme}>
             <main className={NotoSansKr.className}>
               <ReactQueryDevtools initialIsOpen={false} />
-              <NaigationBlock />
+              {showNavigation && <NavigationBlock />}
               <Component {...pageProps} />
             </main>
           </ThemeProvider>

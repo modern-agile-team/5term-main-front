@@ -18,6 +18,7 @@ import { NAVIGATION_SHOW_LIST } from "constants/navigation";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 
+
 export const NotoSansKr = Noto_Sans_KR({
   preload: false,
   weight: "500",

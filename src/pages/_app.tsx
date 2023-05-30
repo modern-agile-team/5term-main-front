@@ -13,11 +13,9 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Provider } from "react-redux";
 import store from "store/configureStore";
 import { NavigationBlock } from "components/common/navigationBar/block";
-import { checkRefreshToken } from "apis/token";
-import { NAVIGATION_SHOW_LIST } from "constants/navigation";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-
+import { NAVIGATION_SHOW_LIST } from "constants/navigation";
 
 export const NotoSansKr = Noto_Sans_KR({
   preload: false,
@@ -34,7 +32,7 @@ export default function MyApp({ Component, pageProps }: AppProps) {
     NAVIGATION_SHOW_LIST.find((url) => url === pathname) ?? false;
 
   useEffect(() => {
-    checkRefreshToken();
+    //checkRefreshToken();
   }, []);
 
   return (

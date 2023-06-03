@@ -7,9 +7,10 @@ import { useForm } from "react-hook-form";
 import { LayoutGroup } from "framer-motion";
 import { LoginBtn, RightTitle, Title, TitleContainer } from "./atom";
 import { ILoginForm } from "interfaces/login";
-import { requestLogin } from "apis/login";
+import { useLoginMutation } from "queries/auth.queries";
 
 export default function LoginFormView() {
+  const { mutate: loginMutate } = useLoginMutation();
   const {
     handleSubmit,
     register,
@@ -19,9 +20,7 @@ export default function LoginFormView() {
   } = useForm();
 
   const login = async (data: ILoginForm) => {
-    if (await requestLogin(data)) {
-      setError("id", { message: "아이디 혹은 비밀번호가 올바르지 않습니다." });
-    }
+    loginMutate(data);
   };
 
   return (

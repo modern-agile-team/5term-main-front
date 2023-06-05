@@ -10,7 +10,6 @@ import { ILoginForm } from "interfaces/login";
 import { useLoginMutation } from "queries/auth.queries";
 
 export default function LoginFormView() {
-  const { mutate: loginMutate } = useLoginMutation();
   const {
     handleSubmit,
     register,
@@ -18,6 +17,7 @@ export default function LoginFormView() {
     getValues,
     setError,
   } = useForm();
+  const { mutate: loginMutate } = useLoginMutation(setError);
 
   const login = async (data: ILoginForm) => {
     loginMutate(data);

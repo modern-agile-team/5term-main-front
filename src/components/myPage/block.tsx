@@ -13,10 +13,14 @@ import {
   UserInfoText,
 } from "./atom";
 
-export function MainBlock() {
+interface InputProps {
+  handleButtonClick: (page: string) => void;
+}
+
+export function MainBlock({ handleButtonClick }: InputProps) {
   return (
     <MainContainer>
-      <ProfileContainer>
+      <ProfileContainer onClick={() => handleButtonClick("pages")}>
         <HeaderText>프로필 수정</HeaderText>
         <Profile />
         <HeaderText>닉네임</HeaderText>
@@ -30,7 +34,9 @@ export function MainBlock() {
         <RowContour />
         <UserContainer>
           <UserInfoText>비밀번호</UserInfoText>
-          <UpdateBtn>수정</UpdateBtn>
+          <UpdateBtn onClick={() => handleButtonClick("pages1")}>
+            수정
+          </UpdateBtn>
         </UserContainer>
         <RowContour />
         <UserContainer>
@@ -40,9 +46,21 @@ export function MainBlock() {
         <RowContour />
         <UserContainer>
           <UserInfoText>이메일</UserInfoText>
-          <UpdateBtn>수정</UpdateBtn>
+          <UpdateBtn onClick={() => handleButtonClick("pages2")}>
+            수정
+          </UpdateBtn>
         </UserContainer>
       </UserInfoContainer>
+    </MainContainer>
+  );
+}
+
+export function PasswordChangeBlock() {
+  return (
+    <MainContainer>
+      <div>TEST</div>
+      <div>TEST</div>
+      <div>TEST</div>
     </MainContainer>
   );
 }

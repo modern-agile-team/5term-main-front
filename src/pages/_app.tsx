@@ -16,6 +16,7 @@ import { NavigationBlock } from "components/common/navigationBar/block";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 import { NAVIGATION_SHOW_LIST } from "constants/navigation";
+import Auth from "components/common/Auth";
 
 export const NotoSansKr = Noto_Sans_KR({
   preload: false,
@@ -24,16 +25,18 @@ export const NotoSansKr = Noto_Sans_KR({
   variable: "--IBMSansKr",
 });
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      retry: 0,
+    },
+  },
+});
 
 export default function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
   const showNavigation =
     NAVIGATION_SHOW_LIST.find((url) => url === pathname) ?? false;
-
-  useEffect(() => {
-    //checkRefreshToken();
-  }, []);
 
   return (
     <>
@@ -45,7 +48,9 @@ export default function MyApp({ Component, pageProps }: AppProps) {
             <main className={NotoSansKr.className}>
               <ReactQueryDevtools initialIsOpen={false} />
               {showNavigation && <NavigationBlock />}
-              <Component {...pageProps} />
+              <Auth>
+                <Component {...pageProps} />
+              </Auth>
             </main>
           </ThemeProvider>
         </Provider>

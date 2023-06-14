@@ -1,3 +1,4 @@
+import { useRouter } from "next/router";
 import {
   ColumnContour,
   HeaderText,
@@ -14,13 +15,14 @@ import {
 } from "./atom";
 
 interface InputProps {
-  handleButtonClick: (page: string) => void;
+  handlePageChange: (page: string) => void;
 }
+export function MainBlock({ handlePageChange }: InputProps) {
+  const router = useRouter();
 
-export function MainBlock({ handleButtonClick }: InputProps) {
   return (
     <MainContainer>
-      <ProfileContainer onClick={() => handleButtonClick("pages")}>
+      <ProfileContainer onClick={() => handlePageChange("[user]/pages1")}>
         <HeaderText>프로필 수정</HeaderText>
         <Profile />
         <HeaderText>닉네임</HeaderText>
@@ -34,7 +36,7 @@ export function MainBlock({ handleButtonClick }: InputProps) {
         <RowContour />
         <UserContainer>
           <UserInfoText>비밀번호</UserInfoText>
-          <UpdateBtn onClick={() => handleButtonClick("pages1")}>
+          <UpdateBtn onClick={() => handlePageChange("/password")}>
             수정
           </UpdateBtn>
         </UserContainer>
@@ -46,16 +48,14 @@ export function MainBlock({ handleButtonClick }: InputProps) {
         <RowContour />
         <UserContainer>
           <UserInfoText>이메일</UserInfoText>
-          <UpdateBtn onClick={() => handleButtonClick("pages2")}>
-            수정
-          </UpdateBtn>
+          <UpdateBtn onClick={() => handlePageChange("pages2")}>수정</UpdateBtn>
         </UserContainer>
       </UserInfoContainer>
     </MainContainer>
   );
 }
 
-export function PasswordChangeBlock() {
+export function PasswordChangeBlock({ handlePageChange }: InputProps) {
   return (
     <MainContainer>
       <div>TEST</div>

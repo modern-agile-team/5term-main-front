@@ -22,7 +22,7 @@ export function MainBlock({ handlePageChange }: InputProps) {
 
   return (
     <MainContainer>
-      <ProfileContainer onClick={() => handlePageChange("[user]/pages1")}>
+      <ProfileContainer onClick={() => handlePageChange("/pages1")}>
         <HeaderText>프로필 수정</HeaderText>
         <Profile />
         <HeaderText>닉네임</HeaderText>

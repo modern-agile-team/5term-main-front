@@ -16,19 +16,14 @@ export default function MyPageFormView() {
   useEffect(() => {
     //뒤로가기 이벤트 및 앞으로 가기 이벤트
     setCurrentPage(window.location.pathname);
-
     const handlePopState = () => {
       setCurrentPage(window.location.pathname);
     };
-
     window.addEventListener("popstate", handlePopState);
-
     return () => {
       window.removeEventListener("popstate", handlePopState);
     };
   }, []);
-
-  useEffect(() => console.log(currentPage), [currentPage]);
 
   return (
     <Container>

@@ -13,6 +13,7 @@ import {
   RelativeContainer,
   FocusServeTitle,
   AnnotationText,
+  ErrorText,
 } from "./atom";
 import { InputProps } from "interfaces/signUp";
 import { useState } from "react";
@@ -118,7 +119,7 @@ export const InputBlock = ({
           </FocusServeTitle>
         )}
         {errors[inputBlockObj.id] ? (
-          <ValidText>{errors?.[inputBlockObj.id]?.message as string}</ValidText>
+          <ErrorText>{errors?.[inputBlockObj.id]?.message as string}</ErrorText>
         ) : (
           certification && <ValidText>{inputBlockObj.validText}</ValidText>
         )}

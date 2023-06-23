@@ -10,12 +10,7 @@ export const LoginBtn = styled.button`
   width: 390px;
   height: 50px;
   margin-top: 63px;
-
-  background: rgb(182 187 190 / 95%);
-  box-shadow: inset 5px 5px 8px #4c4b4b80, 7px 7px 15px #4e4c4c9e;
-  backdrop-filter: blur(20px);
-  border-radius: 6px;
-  border: 1px solid #aaaaaa;
+  border-radius: 10px;
 
   cursor: pointer;
 

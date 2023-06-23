@@ -13,6 +13,7 @@ export const Header = styled.title`
   font-size: 40px;
   font-weight: 700;
 
+  margin-bottom: 4vh;
   height: 20vh;
   display: flex;
   justify-content: center;
@@ -22,10 +23,10 @@ export const Header = styled.title`
 
 export const InputContainer = styled.div`
   width: 601px;
-  height: 90px;
+  height: 25px;
+  padding-left: 10px;
+  margin-top: 40px;
   display: flex;
-  justify-content: space-between;
-  padding: 40px 0 30px;
   position: relative;
 
   @media screen and (max-width: 550px) {
@@ -37,13 +38,17 @@ export const ServeTitle = styled(motion.label)`
   font-size: 16px;
   font-weight: 700;
   color: ${(props) => props.theme.text3};
+  left: 10px;
+  top: 15px;
 
   z-index: -1;
   position: absolute;
 `;
 
-export const FocusServeTitle = styled(ServeTitle)`
+export const FocusServeTitle = styled(motion.label)`
   color: ${(props) => props.theme.text2};
+  font-size: 16px;
+  font-weight: 700;
 
   position: relative;
 `;
@@ -65,7 +70,7 @@ export const AnnotationText = styled.label`
 export const ValidText = styled.div`
   font-size: 16px;
   font-weight: 500;
-  color: ${(props) => props.theme.text3};
+  color: #b8bdde;
   right: 1px;
   position: absolute;
 
@@ -75,17 +80,22 @@ export const ValidText = styled.div`
   }
 `;
 
+export const ErrorText = styled(ValidText)`
+  color: #f7e7b1;
+`;
+
 export const InfoInput = styled.input`
   font-size: 14px;
   font-weight: 500;
   font-family: ${(props) => props.theme.NotoSansKr};
   color: ${(props) => props.theme.text3};
-
+  border-radius: 10px;
+  padding: 15px 0 15px 9px;
   width: 600px;
+  height: 50px;
   outline: none;
   background: transparent;
-  border: 0;
-  border-bottom: 3px solid ${(props) => props.theme.text};
+  border: 1px solid ${(props) => props.theme.text};
 
   @media screen and (max-width: 550px) {
     width: 360px;
@@ -100,15 +110,15 @@ export const SendCertificationBtn = styled.button`
 
   left: 1;
   right: 0;
-  top: -11px;
+  top: 11px;
+  right: 11px;
 
   width: 108px;
   height: 28px;
-  background: rgb(182 187 190 / 95%);
-  box-shadow: inset 5px 5px 8px #4c4b4b80, 7px 7px 15px #4e4c4c9e;
-  backdrop-filter: blur(20px);
+
   border-radius: 6px;
-  border: 1px solid #aaaaaa;
+  background-color: rgba(255, 255, 255, 0.5);
+  border: 1px solid #ffffff;
 
   position: absolute;
 
@@ -127,16 +137,12 @@ export const SignUpBtn = styled.button`
   font-size: 20px;
   font-weight: 700;
   font-family: ${(props) => props.theme.NotoSansKr};
-  color: ${(props) => props.theme.text};
+  color: black;
 
   width: 390px;
   height: 50px;
   margin: 50px 0 50px;
-  background: rgb(28 36 41 / 95%);
-  box-shadow: inset 5px 5px 6px #62626280, 7px 7px 10px #000000;
-  backdrop-filter: blur(3px);
   border-radius: 10px;
-  border: 1px solid #aaaaaa;
 
   cursor: pointer;
 

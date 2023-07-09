@@ -279,7 +279,7 @@ export const PasswordChangeContainer = styled.div`
   flex-direction: column;
 `;
 
-export const PasswordChangeText = styled.div`
+export const ChangeText = styled.div`
   height: 40px;
   color: ${(props) => props.theme.text};
   font-size: 28px;
@@ -321,3 +321,28 @@ export const ValidText = styled.div`
     padding-top: 6px;
   }
 `;
+
+// ----------------------------------------------------------------------------------
+//            자기소개 변경 atom
+// ----------------------------------------------------------------------------------
+
+export const IntroductionChangeContainer = styled.div`
+  width: 73vw;
+  height: 50vh;
+  max-width: 1000px;
+  max-height: 600px;
+  min-width: 650px;
+  min-height: 300px;
+  border-radius: 26px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const IntroductionChangeWafer = styled.div`
+  width: 90%;
+  height: 70%;
+
+  margin: 30px 0;
+  border: 1px solid white;
+`; //rich하게 하려면 div 그냥 하려면 textarea

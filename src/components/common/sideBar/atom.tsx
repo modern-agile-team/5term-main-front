@@ -4,6 +4,7 @@ export const MenuContainer = styled.aside`
   width: 23vw;
   max-width: 400px;
   min-width: 205px;
+  margin-right: 100px;
 
   height: 100vh;
 

@@ -22,10 +22,16 @@ import {
   UserContainer,
   UserInfoContainer,
   UserInfoText,
-  NicknameChangeInput,
+  ChangeInput,
   EditroWafer,
   CheckBtn,
   CancelBtn,
+  PasswordChangeContainer,
+  PasswordChangeText,
+  PasswordChangeWapper,
+  PasswordInputWapper,
+  PasswordChangeLabel,
+  ValidText,
 } from "./atom";
 
 interface InputProps {
@@ -85,7 +91,7 @@ export function ProfileChangeBlock({ handlePageChange }: InputProps) {
       <NicknameWafer>
         <NicknameText>닉네임</NicknameText>
         <CangeWafer>
-          <NicknameChangeInput />
+          <ChangeInput />
         </CangeWafer>
       </NicknameWafer>
       <EditroWafer>
@@ -98,10 +104,29 @@ export function ProfileChangeBlock({ handlePageChange }: InputProps) {
 
 export function PasswordChangeBlock({ handlePageChange }: InputProps) {
   return (
-    <MainContainer>
-      <div>TEST</div>
-      <div>TEST</div>
-      <div>TEST</div>
-    </MainContainer>
+    <PasswordChangeContainer>
+      <PasswordChangeText>비밀번호 변경</PasswordChangeText>
+      <PasswordChangeWapper>
+        <PasswordInputWapper>
+          <PasswordChangeLabel>현재 비밀번호</PasswordChangeLabel>
+          <ChangeInput />
+          <ValidText>맞음</ValidText>
+        </PasswordInputWapper>
+        <PasswordInputWapper>
+          <PasswordChangeLabel>새 비밀번호</PasswordChangeLabel>
+          <ChangeInput />
+          <ValidText>맞음</ValidText>
+        </PasswordInputWapper>
+        <PasswordInputWapper>
+          <PasswordChangeLabel>새 비밀번호 확인</PasswordChangeLabel>
+          <ChangeInput />
+          <ValidText>맞음</ValidText>
+        </PasswordInputWapper>
+      </PasswordChangeWapper>
+      <EditroWafer>
+        <CheckBtn>확인</CheckBtn>
+        <CancelBtn>취소</CancelBtn>
+      </EditroWafer>
+    </PasswordChangeContainer>
   );
 }

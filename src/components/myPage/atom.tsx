@@ -165,10 +165,6 @@ export const UserContainer = styled.div`
 `;
 
 // ----------------------------------------------------------------------------------
-//            패스워드 변경 atom
-// ----------------------------------------------------------------------------------
-
-// ----------------------------------------------------------------------------------
 //            프로필 및 닉네임 변경 atom
 // ----------------------------------------------------------------------------------
 
@@ -236,7 +232,7 @@ export const DelitationBtn = styled(UpdateBtn)`
   font-size: 15px;
 `;
 
-export const NicknameChangeInput = styled.input`
+export const ChangeInput = styled.input`
   width: 457px;
   height: 42px;
   border-radius: 10px;
@@ -264,4 +260,64 @@ export const CancelBtn = styled(DelitationBtn)`
   height: 46px;
   font-size: 20px;
   margin-left: 30px;
+`;
+
+// ----------------------------------------------------------------------------------
+//            패스워드 변경 atom
+// ----------------------------------------------------------------------------------
+
+export const PasswordChangeContainer = styled.div`
+  width: 73vw;
+  height: 50vh;
+  max-width: 1000px;
+  max-height: 600px;
+  min-width: 650px;
+  min-height: 300px;
+  border-radius: 26px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const PasswordChangeText = styled.div`
+  height: 40px;
+  color: ${(props) => props.theme.text};
+  font-size: 28px;
+`;
+
+export const PasswordChangeWapper = styled.div`
+  width: 800px;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  position: relative;
+`;
+
+export const PasswordInputWapper = styled.div`
+  width: 80%;
+  margin-bottom: 40px;
+`;
+
+export const PasswordChangeLabel = styled.label`
+  display: inline-block;
+  width: 130px;
+  height: 20px;
+  color: ${(props) => props.theme.text};
+`;
+
+export const ValidText = styled.div`
+  font-size: 16px;
+  font-weight: 500;
+  color: #b8bdde;
+  right: 150px;
+  position: absolute;
+
+  @media screen and (max-width: 550px) {
+    font-size: 10px;
+    padding-top: 6px;
+  }
 `;

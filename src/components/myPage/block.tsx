@@ -1,17 +1,31 @@
 import { useRouter } from "next/router";
 import {
   ColumnContour,
+  DelitationBtn,
   HeaderText,
   LabelText,
   MainContainer,
   NameText,
+  NicknameText,
+  NicknameWafer,
   Profile,
+  ProfileCangeEditor,
+  CangeWafer,
+  ProfileChange,
+  ChangeBtn,
+  ProfileChangeContainer,
   ProfileContainer,
+  ProfileText,
+  ProfileWafer,
   RowContour,
   UpdateBtn,
   UserContainer,
   UserInfoContainer,
   UserInfoText,
+  NicknameChangeInput,
+  EditroWafer,
+  CheckBtn,
+  CancelBtn,
 } from "./atom";
 
 interface InputProps {
@@ -52,6 +66,33 @@ export function MainBlock({ handlePageChange }: InputProps) {
         </UserContainer>
       </UserInfoContainer>
     </MainContainer>
+  );
+}
+
+export function ProfileChangeBlock({ handlePageChange }: InputProps) {
+  return (
+    <ProfileChangeContainer>
+      <ProfileWafer>
+        <ProfileText>프로필 사진</ProfileText>
+        <CangeWafer>
+          <ProfileChange />
+          <ProfileCangeEditor>
+            <ChangeBtn>사진 변경</ChangeBtn>
+            <DelitationBtn>삭제</DelitationBtn>
+          </ProfileCangeEditor>
+        </CangeWafer>
+      </ProfileWafer>
+      <NicknameWafer>
+        <NicknameText>닉네임</NicknameText>
+        <CangeWafer>
+          <NicknameChangeInput />
+        </CangeWafer>
+      </NicknameWafer>
+      <EditroWafer>
+        <CheckBtn>적용</CheckBtn>
+        <CancelBtn>취소</CancelBtn>
+      </EditroWafer>
+    </ProfileChangeContainer>
   );
 }
 

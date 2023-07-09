@@ -19,19 +19,12 @@ export const RightContainer = styled.section`
 `;
 
 export const MainContainer = styled.div`
-  width: 62.5vw;
+  width: 73vw;
   height: 50vh;
   max-width: 1000px;
   max-height: 600px;
   min-width: 650px;
   min-height: 300px;
-  border-radius: 26px;
-
-  /* background: linear-gradient(rgba(6, 9, 11, 0.2), rgba(2, 6, 9, 0.5)); */
-  box-shadow: 7px 7px 10px 0 rgba(30, 30, 30, 0.5),
-    inset 5px 5px 6px 0 rgba(98, 98, 98, 0.5);
-  background: rgba(10, 17, 21, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.4);
 
   display: flex;
   align-items: center;
@@ -119,6 +112,12 @@ export const Profile = () => (
   </ProfileCustom>
 );
 
+export const ProfileChange = () => (
+  <ImageWapper>
+    <Image src={defaultImg} alt="test" width={150} height={150} />
+  </ImageWapper>
+);
+
 export const LabelText = styled.label`
   font-size: 16px;
   font-weight: 500;
@@ -146,7 +145,8 @@ export const UpdateBtn = styled.button`
   padding: 0;
   border: none;
   border-radius: 5px;
-  background-color: #0052ff;
+  background-color: transparent;
+  border: 1px solid ${(props) => props.theme.text};
 
   font-size: 12px;
   font-weight: 500;
@@ -167,3 +167,101 @@ export const UserContainer = styled.div`
 // ----------------------------------------------------------------------------------
 //            패스워드 변경 atom
 // ----------------------------------------------------------------------------------
+
+// ----------------------------------------------------------------------------------
+//            프로필 및 닉네임 변경 atom
+// ----------------------------------------------------------------------------------
+
+export const ProfileChangeContainer = styled.div`
+  width: 73vw;
+  height: 50vh;
+  max-width: 1000px;
+  max-height: 600px;
+  min-width: 650px;
+  min-height: 300px;
+  border-radius: 26px;
+
+  display: flex;
+  flex-direction: column;
+`;
+
+export const NicknameWafer = styled.div`
+  width: 80%;
+  height: 100%;
+  margin-left: 30px;
+  display: flex;
+  align-items: center;
+`;
+
+export const ProfileWafer = styled(NicknameWafer)`
+  border-bottom: solid 1px white;
+`;
+
+export const ProfileText = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: ${(props) => props.theme.text};
+  width: 250px;
+  height: 100px;
+  font-size: 20px;
+`;
+
+export const NicknameText = styled(ProfileText)``;
+
+export const CangeWafer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+`;
+
+export const ProfileCangeEditor = styled.div`
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+`;
+
+export const ChangeBtn = styled(UpdateBtn)`
+  width: 80px;
+  height: 26px;
+  font-size: 18px;
+  background-color: #2f77ff;
+  border: none;
+  font-size: 16px;
+`;
+
+export const DelitationBtn = styled(UpdateBtn)`
+  width: 50px;
+  height: 26px;
+  font-size: 15px;
+`;
+
+export const NicknameChangeInput = styled.input`
+  width: 457px;
+  height: 42px;
+  border-radius: 10px;
+  background-color: transparent;
+  border: 1px solid white;
+`;
+
+export const EditroWafer = styled.div`
+  width: 80%;
+
+  display: flex;
+  justify-content: center;
+`;
+
+export const CheckBtn = styled(ChangeBtn)`
+  width: 92px;
+  height: 46px;
+  font-size: 20px;
+  background-color: #2f77ff;
+  border: none;
+`;
+
+export const CancelBtn = styled(DelitationBtn)`
+  width: 92px;
+  height: 46px;
+  font-size: 20px;
+  margin-left: 30px;
+`;

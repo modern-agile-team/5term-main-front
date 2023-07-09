@@ -2,7 +2,7 @@ import Link from "next/link";
 import styled from "styled-components";
 
 export const NavigationContainer = styled.nav`
-  width: 80vw;
+  width: 100vw;
   right: 0px;
   top: 40px;
   margin: 0 auto;

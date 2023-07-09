@@ -1,6 +1,6 @@
 import { SideBarBlock } from "components/common/sideBar/block";
 import { Container, RightContainer } from "./atom";
-import { MainBlock, PasswordChangeBlock } from "./block";
+import { MainBlock, PasswordChangeBlock, ProfileChangeBlock } from "./block";
 import { useEffect, useState } from "react";
 
 export default function MyPageFormView() {
@@ -31,6 +31,11 @@ export default function MyPageFormView() {
       <RightContainer>
         {currentPage === "/user" && ( // 백엔드 api 연동때 수정 예정
           <MainBlock handlePageChange={handlePageChange}></MainBlock>
+        )}
+        {currentPage === "/pages1" && (
+          <ProfileChangeBlock
+            handlePageChange={handlePageChange}
+          ></ProfileChangeBlock>
         )}
         {currentPage === "/password" && (
           <PasswordChangeBlock
